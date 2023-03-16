@@ -19,7 +19,7 @@ const createPet = function (name, species) {
         console.log(`Yay! ${name} loves to play!`);
         this.isTired += 1;
       }
-    }
+    },
   };
   return pet;
 };
@@ -31,6 +31,31 @@ const cleo = createPet("Cleo", "rat");
 const francine = createPet("Francine ", "turtle");
 
 //console.log(sora, clover, baxter, cleo, francine);
-sora.sleep();
+/* sora.sleep();
 baxter.play();
-console.log(sora, baxter);
+console.log(sora, baxter); */
+
+//update Properties & Create an Array of Objects
+clover.isTired = 8;
+francine.isTired = 9;
+
+const allPets = [sora, clover, baxter, cleo, francine];
+console.log(allPets);
+
+//Display Pets in the Browser
+const showPets = function (petArray) {
+  pets.innerHTML = "";
+  for (let pet of petArray) {
+    let status = "ready to play";
+    if (pet.isTired >= 7) {
+      status = "sleeping";
+    }
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="pet-name">${pet.name}</span> and ${pet.species} is ${status}`;
+    pets.append(li);
+  }
+};
+
+statusButton.addEventListener("click", function () {
+  showPets(allPets);
+});
